@@ -2,6 +2,7 @@
 import pika
 import config
 import json
+import traceback
 
 
 class QSystem(object):
@@ -52,5 +53,5 @@ class Scheduler(object):
 		try:
 			self.channel.start_consuming()
 		except Exception as e:
-			print(e)
+			print(traceback.format_exc())
 

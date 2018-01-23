@@ -17,14 +17,12 @@ class AdvancedExtractor(BasicExtractor):
 			data = beautiful_soup
 			while i < len(rule) and data:
 
-				print(rule[i])
 				try:
 					a_type, a_value = rule[i].split(':')
 				except:
 					a_value = rule[i]
 					a_type = None
 
-				print(a_type, a_value)
 
 				if a_type and a_type == 'id':
 					data = data.find(id=a_value)

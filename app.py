@@ -2,6 +2,9 @@
 from scheduler import Scheduler
 
 
+import uuid
+
+
 class Product(object):
 
 	def __init__(self):

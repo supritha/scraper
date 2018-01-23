@@ -5,9 +5,6 @@ from app import Product
 
 import json
 import requests
-import uuid
-
-
 
 
 

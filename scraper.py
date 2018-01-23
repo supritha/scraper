@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 
 
 import requests
+import traceback
 
 
 class BasicExtractor(object):
@@ -42,7 +43,8 @@ class Scraper(object):
 		details = []
 		for attribute_cls in attributes:
 			attribute = attribute_cls()
-			attribute.value = self.extractor.get(content, attribute.rules)
+			value = self.extractor.get(content, attribute.rules)
+			attribute.value = value.replace('\\n', '').strip()
 			details.append(attribute)
 
 		return details
@@ -57,9 +59,9 @@ def get_content(url):
 	try:
 		response = requests.get(url)
 	except Exception as e:
-		raise URLLoadError
+		print(traceback.format_exc())
 
 	if response.status_code == 200:
 		return response.content
 
-	raise response.content
+	raise URLLoadError
